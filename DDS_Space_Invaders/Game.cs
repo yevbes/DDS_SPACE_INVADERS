@@ -44,29 +44,43 @@ namespace Lab_3___Invaders
         {
             this.formArea = formArea;
             this.random = random;
-            stars = new Stars(random, formArea);
+
+            // Se crea un objeto con una Lista de Estrellas con su posición y el color
+            stars = new Stars(random, formArea); 
+
+            // Crea los labels en la posición del rectangulo
             scoreLocation = new PointF((formArea.Left + 5.0F), (formArea.Top + 5.0F));
             livesLocation = new PointF((formArea.Right - 120.0F), (formArea.Top + 5.0F));
             waveLocation = new PointF((formArea.Left + 5.0F), (formArea.Top + 25.0F));
+
+            // Crea el objeto nave en el punto de la localización del rectangulo
             playerShip = new PlayerShip(formArea, 
                 new Point((formArea.Width / 2), (formArea.Height - 50)));
+            
+            // Creación de las listas
             playerShots = new List<Shot>();
             invaderShots = new List<Shot>();
             invaders = new List<Invader>();
 
-            
+            // Siguiente nivel
             nextWave();
         }
 
         // Draw is fired with each paint event of the main form
         public void Draw(Graphics graphics, int frame, bool gameOver)
         {
+            // Fondo negro
             graphics.FillRectangle(Brushes.Black, formArea);
             
+            // Dibuja las estrellas
             stars.Draw(graphics);
+
+            // Para cada invader le pasa frame de animación
             foreach (Invader invader in invaders)
                 invader.Draw(graphics, frame);
             playerShip.Draw(graphics);
+
+
             foreach (Shot shot in playerShots)
                 shot.Draw(graphics);
             foreach (Shot shot in invaderShots)
@@ -305,9 +319,14 @@ namespace Lab_3___Invaders
 
         private void nextWave()
         {
+            // Incrementa nivel
             wave++;
+
+            // Direction dirección derecha
             invaderDirection = Direction.Right;
+
             // if the wave is under 7, set frames skipped to 6 - current wave number
+            // Mientras menos frames por segundo haya, mas rapido ira
             if (wave < 7)
             {
                 framesSkipped = 6 - wave;
@@ -316,17 +335,23 @@ namespace Lab_3___Invaders
                 framesSkipped = 0;
 
             int currentInvaderYSpace = 0;
+
+            // Para cada ShipType
             for (int x = 0; x < 5; x++)
             {
                 ShipType currentInvaderType = (ShipType)x;
+                // Hace el espaciado entre los enemigos en el eje X
                 currentInvaderYSpace += invaderYSpacing;
                 int currentInvaderXSpace = 0;
-                // Crea a los invaders
+
+                // Numero de columnas de los enemigos en eje Y
                 for (int y = 0; y < 5; y++)
                 {
                     currentInvaderXSpace += invaderXSpacing;
+                    // Encuentra los puntos para dibujar a los enemigos
                     Point newInvaderPoint =
                         new Point(currentInvaderXSpace, currentInvaderYSpace);
+
                     // Need to add more varied invader score values
                     Invader newInvader =
                         new Invader(currentInvaderType, newInvaderPoint, 10);

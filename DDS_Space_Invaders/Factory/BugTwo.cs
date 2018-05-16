@@ -9,7 +9,8 @@ namespace Lab_3___Invaders.Factory
     {
         public BugTwo()
         {
-            Console.WriteLine("BugTwo Created");
+            
         }
+
     }
 }
