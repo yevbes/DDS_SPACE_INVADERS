@@ -5,13 +5,13 @@ using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
 using Lab_3___Invaders.Resources;
+using Lab_3___Invaders.Factory;
 
 namespace Lab_3___Invaders
 {
     class Game
     {
         private Stars stars;
-
         private Rectangle formArea;
         private Random random;
 
@@ -54,9 +54,10 @@ namespace Lab_3___Invaders
             waveLocation = new PointF((formArea.Left + 5.0F), (formArea.Top + 25.0F));
 
             // Crea el objeto nave en el punto de la localización del rectangulo
-            playerShip = new PlayerShip(formArea, 
-                new Point((formArea.Width / 2), (formArea.Height - 50)));
-            
+            playerShip = PlayerShip.Instance;
+            playerShip.InitValues(formArea,
+            new Point((formArea.Width / 2), (formArea.Height - 50)));
+
             // Creación de las listas
             playerShots = new List<Shot>();
             invaderShots = new List<Shot>();
@@ -157,7 +158,6 @@ namespace Lab_3___Invaders
                     nextWave();
                 }
             }
-
         }
 
         private void moveInvaders()
@@ -278,11 +278,16 @@ namespace Lab_3___Invaders
                     {
                         this.ia = new EstrategiaDispara3() as IEstrategia;
                         numShots = ia.Exec();
+                        
                     }
                     if (livesLeft == 2)
                     {
                         this.ia = new EstrategiaDispara4() as IEstrategia;
                         numShots = ia.Exec();
+                        Creator creator = new ConcreteCreatorOne();
+                        Product product = creator.FactoryMethod();
+                        creator = new ConcreteCreatorTwo();
+                        product = creator.FactoryMethod();
                     }
                     if (livesLeft == 1)
                     {
@@ -309,7 +314,10 @@ namespace Lab_3___Invaders
                     }
                 }
                 foreach (Invader invader in deadInvaders)
+                {
                     invaders.Remove(invader);
+
+                }
             }
             foreach (Shot shot in deadPlayerShots)
                 playerShots.Remove(shot);

@@ -37,13 +37,41 @@ namespace Lab_3___Invaders
 
         private float deadShipHeight;
 
-        public PlayerShip(Rectangle boundaries, Point location)
+
+        #region
+        /// <summary>
+        ///  Singleton
+        /// </summary>
+        private static PlayerShip instance = null;
+
+        protected PlayerShip() { }
+
+        public static PlayerShip Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new PlayerShip();
+                return instance;
+            }
+        }
+        #endregion
+
+        public void InitValues(Rectangle boundaries, Point location)
         {
             this.boundaries = boundaries;
             this.Location = location;
             Alive = true;
             deadShipHeight = 1.0F;
         }
+
+        /*public PlayerShip(Rectangle boundaries, Point location)
+        {
+            this.boundaries = boundaries;
+            this.Location = location;
+            Alive = true;
+            deadShipHeight = 1.0F;
+        }*/
 
         public void Move(Direction direction)
         {

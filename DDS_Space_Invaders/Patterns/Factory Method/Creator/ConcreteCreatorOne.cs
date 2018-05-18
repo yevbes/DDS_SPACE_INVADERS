@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 
 namespace Lab_3___Invaders.Factory
 {
-    class BugThree : Invader
+    class ConcreteCreatorOne : Creator
     {
-        public BugThree()
+        public override Product FactoryMethod()
         {
-            Console.WriteLine("BugThree Created");
+            return new ConcreteProductOne();
         }
     }
 }

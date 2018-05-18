@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 
 namespace Lab_3___Invaders.Factory
 {
-    class BugFour : Invader
+    class ConcreteProductTwo : Product
     {
-        public BugFour()
+
+        public ConcreteProductTwo()
         {
-            Console.WriteLine("BugFour Created");
+            Console.WriteLine("Product Created Two");
         }
+
+ 
     }
 }
