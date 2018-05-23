@@ -305,6 +305,8 @@ namespace Lab_3___Invaders
                     {
                         deadInvaders.Add(invader);
                         deadInvaderShots.Add(shot);
+                        // Add bonus
+                        score = invader.AddAditionalScore(score);
                         // Score multiplier based on wave
                         score = score + (1 * wave);
                     }

@@ -75,6 +75,11 @@ namespace Lab_3___Invaders.Factory
             return invaderGraphics;
         }
 
+        public virtual int AddAditionalScore(int score)
+        {
+            return score;
+        }
+
         private void createInvaderBitmapArray()
         {
             imageArray = new Bitmap[4];
