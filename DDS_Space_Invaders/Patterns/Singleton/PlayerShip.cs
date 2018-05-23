@@ -43,7 +43,7 @@ namespace Lab_3___Invaders
         /// </summary>
         private static PlayerShip instance = null;
 
-        protected PlayerShip() { }
+        private PlayerShip() { }
 
         public static PlayerShip Instance
         {

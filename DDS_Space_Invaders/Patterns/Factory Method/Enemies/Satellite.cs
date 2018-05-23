@@ -6,9 +6,10 @@ using System.Text;
 
 namespace Lab_3___Invaders.Factory
 {
-    abstract class Creator
+    class Satellite : Invader
     {
-        public Product product { get; set; }
-        abstract public Product FactoryMethod();
+        public Satellite(ShipType invaderType, Point location, int score) : base(invaderType, location, score)
+        {
+        }
     }
 }

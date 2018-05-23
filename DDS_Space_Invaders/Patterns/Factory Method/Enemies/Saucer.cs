@@ -6,11 +6,10 @@ using System.Text;
 
 namespace Lab_3___Invaders.Factory
 {
-    class ConcreteCreatorTwo : Creator
+    class Saucer : Invader
     {
-        public override Product FactoryMethod()
+        public Saucer(ShipType invaderType, Point location, int score) : base(invaderType, location, score)
         {
-            return new ConcreteProductTwo();
         }
     }
 }

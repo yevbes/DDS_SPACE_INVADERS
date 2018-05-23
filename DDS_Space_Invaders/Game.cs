@@ -284,10 +284,6 @@ namespace Lab_3___Invaders
                     {
                         this.ia = new EstrategiaDispara4() as IEstrategia;
                         numShots = ia.Exec();
-                        Creator creator = new ConcreteCreatorOne();
-                        Product product = creator.FactoryMethod();
-                        creator = new ConcreteCreatorTwo();
-                        product = creator.FactoryMethod();
                     }
                     if (livesLeft == 1)
                     {
@@ -361,11 +357,37 @@ namespace Lab_3___Invaders
                         new Point(currentInvaderXSpace, currentInvaderYSpace);
 
                     // Need to add more varied invader score values
-                    Invader newInvader =
-                        new Invader(currentInvaderType, newInvaderPoint, 10);
-                    invaders.Add(newInvader);
+                    /*Invader newInvader =
+                        new Invader(currentInvaderType, newInvaderPoint, 10);*/
+                    #region FactoryMethod
+                    CrearInvaders(currentInvaderType,newInvaderPoint, 10);
+                    #endregion
                 }
             }
+        }
+
+        public void CrearInvaders(ShipType currentInvaderType, Point newInvaderPoint, int score)
+        {
+            Invader enemy = null;
+            switch (currentInvaderType)
+            {
+                case ShipType.Bug:
+                    enemy = new Bug(currentInvaderType, newInvaderPoint, 10);
+                    break;
+                case ShipType.Satellite:
+                    enemy = new Satellite(currentInvaderType, newInvaderPoint, 10);
+                    break;
+                case ShipType.Saucer:
+                    enemy = new Saucer(currentInvaderType, newInvaderPoint, 10);
+                    break;
+                case ShipType.Spaceship:
+                    enemy = new Spaceship(currentInvaderType, newInvaderPoint, 10);
+                    break;
+                case ShipType.Star:
+                    enemy = new Lab_3___Invaders.Factory.Star(currentInvaderType, newInvaderPoint, 10);
+                    break;
+            }
+            invaders.Add(enemy);
         }
 
         public event EventHandler GameOver;

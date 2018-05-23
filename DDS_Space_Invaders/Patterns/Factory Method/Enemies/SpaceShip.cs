@@ -6,7 +6,10 @@ using System.Text;
 
 namespace Lab_3___Invaders.Factory
 {
-    abstract class Product
+    class Spaceship : Invader
     {
+        public Spaceship(ShipType invaderType, Point location, int score) : base(invaderType, location, score)
+        {
+        }
     }
 }

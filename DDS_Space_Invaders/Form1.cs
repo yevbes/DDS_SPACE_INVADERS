@@ -100,24 +100,24 @@ namespace Lab_3___Invaders
             gameOver = true;
             Invalidate();
         }
-        Timer t;
-        int move_x = 0;
-        int move_y = 1;
+        //Timer t;
+        //int move_x = 0;
+        //int move_y = 1;
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            r = new Rectangle(10, 10, 35, 35);
+            /*r = new Rectangle(10, 10, 35, 35);
             g = this.CreateGraphics();
             t = new Timer();
             t.Interval = 10;
             t.Tick += new EventHandler(t_Ticks_Two);
-            t.Start();
+            t.Start();*/
         }
 
-        private void t_Ticks_Two(object sender, EventArgs e)
+        /*private void t_Ticks_Two(object sender, EventArgs e)
         {
             g.DrawRectangle(new Pen(Brushes.Cornsilk, 6), r);
             r.Y += move_y;
-        }
+        }*/
     }
 }

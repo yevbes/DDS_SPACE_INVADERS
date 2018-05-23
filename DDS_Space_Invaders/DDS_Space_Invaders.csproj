@@ -47,15 +47,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Direction.cs" />
-    <Compile Include="Patterns\Factory Method\Creator\ConcreteCreatorTwo.cs" />
-    <Compile Include="Patterns\Factory Method\ProductEnemy\ConcreteProductTwo.cs" />
+    <Compile Include="Patterns\Factory Method\Enemies\Saucer.cs" />
+    <Compile Include="Patterns\Factory Method\Enemies\Satellite.cs" />
+    <Compile Include="Patterns\Factory Method\Enemies\Spaceship.cs" />
+    <Compile Include="Patterns\Factory Method\Enemies\Star.cs" />
     <Compile Include="Patterns\Strategy\EstrategiaDispara3.cs" />
     <Compile Include="Patterns\Strategy\EstrategiaMuere.cs" />
     <Compile Include="Patterns\Strategy\EstrategiaDispara5.cs" />
-    <Compile Include="Patterns\Factory Method\ProductEnemy\ConcreteProductOne.cs" />
-    <Compile Include="Patterns\Factory Method\Creator\ConcreteCreatorOne.cs" />
-    <Compile Include="Patterns\Factory Method\Creator\Creator.cs" />
-    <Compile Include="Patterns\Factory Method\ProductEnemy\Product.cs" />
+    <Compile Include="Patterns\Factory Method\Enemies\Bug.cs" />
+    <Compile Include="Patterns\Factory Method\Creator\Invader.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,7 +64,6 @@
     </Compile>
     <Compile Include="Game.cs" />
     <Compile Include="Patterns\Strategy\IEstrategia.cs" />
-    <Compile Include="Invader.cs" />
     <Compile Include="Patterns\Singleton\PlayerShip.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

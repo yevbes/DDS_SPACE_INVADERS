@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Drawing;
 using System.Windows.Forms;
 
-namespace Lab_3___Invaders
+namespace Lab_3___Invaders.Factory
 {
-    class Invader
+    abstract class Invader
     {
         private const int horizontalInterval = 10;
         private const int verticalInterval = 30;
@@ -56,7 +56,6 @@ namespace Lab_3___Invaders
             }
 
         }
-
         public Graphics Draw(Graphics graphics, int animationCell)
         {
             Graphics invaderGraphics = graphics;
@@ -69,7 +68,7 @@ namespace Lab_3___Invaders
             {
                 MessageBox.Show(ex.ToString());
             }
-            
+
             //DEBUG red square invaders
             //graphics.FillRectangle(Brushes.Red,
             //    Location.X, Location.Y, 20, 20);
