@@ -63,7 +63,7 @@ namespace Lab_3___Invaders
             invaders = new List<Invader>();
 
             // Siguiente nivel
-            nivel = new Nivel(invaders);
+            nivel = new Level(invaders);
             nivel.nextWave();
             //nextWave();
         }

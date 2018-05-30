@@ -8,9 +8,9 @@ using System.Text;
 
 namespace Lab_3___Invaders
 {
-    class Nivel : Levels
+    class Level : Levels
     {
-        public Nivel(List<Invader> invaders) : base(invaders)
+        public Level(List<Invader> invaders) : base(invaders)
         {
             this.invaders = invaders;
         }

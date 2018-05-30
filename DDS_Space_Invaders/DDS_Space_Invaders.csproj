@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Direction.cs" />
-    <Compile Include="Patterns\Non Gamma patterns\Null Object\Nivel.cs" />
+    <Compile Include="Patterns\Non Gamma patterns\Null Object\Level.cs" />
     <Compile Include="Patterns\Gamma patterns\Factory Method\Enemies\Saucer.cs" />
     <Compile Include="Patterns\Gamma patterns\Factory Method\Enemies\Satellite.cs" />
     <Compile Include="Patterns\Gamma patterns\Factory Method\Enemies\Spaceship.cs" />
