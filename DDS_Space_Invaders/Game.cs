@@ -14,17 +14,14 @@ namespace Lab_3___Invaders
         private Stars stars;
         private Rectangle formArea;
         private Random random;
+        private Nivel nivel;
 
         private int score = 0;
         private int livesLeft = 4;
-        private int wave = 0;
-        private int framesSkipped = 6;
+        
         private int currentGameFrame = 1;
 
-        private Direction invaderDirection;
         private List<Invader> invaders;
-        private const int invaderXSpacing = 60;
-        private const int invaderYSpacing = 60;
 
         private PlayerShip playerShip;
         private List<Shot> playerShots;
@@ -64,7 +61,9 @@ namespace Lab_3___Invaders
             invaders = new List<Invader>();
 
             // Siguiente nivel
-            nextWave();
+            nivel = new Nivel(invaders);
+            nivel.nextWave();
+            //nextWave();
         }
 
         // Draw is fired with each paint event of the main form
@@ -91,7 +90,7 @@ namespace Lab_3___Invaders
                 statsFont, Brushes.Yellow, scoreLocation);
             graphics.DrawString(("Lives: " + livesLeft.ToString()),
                 statsFont, Brushes.Yellow, livesLocation);
-            graphics.DrawString(("Wave: " + wave.ToString()),
+            graphics.DrawString(("Wave: " + nivel.Wave.ToString()),
                 statsFont, Brushes.Yellow, waveLocation);
             if (gameOver)
             {
@@ -155,7 +154,8 @@ namespace Lab_3___Invaders
                 checkForCollisions();
                 if (invaders.Count < 1)
                 {
-                    nextWave();
+                    //nextWave();
+                    nivel.nextWave();
                 }
             }
         }
@@ -163,11 +163,11 @@ namespace Lab_3___Invaders
         private void moveInvaders()
         {
             // if the frame is skipped invaders do not move
-            if (currentGameFrame > framesSkipped)
+            if (currentGameFrame > nivel.FramesSkipped)
             {
                 // Check to see if invaders are at edge of screen, 
                 // if so change direction
-                if (invaderDirection == Direction.Right)
+                if (nivel.InvaderDirection == Direction.Right)
                 {
                     var edgeInvaders =
                         from invader in invaders
@@ -175,7 +175,7 @@ namespace Lab_3___Invaders
                         select invader;
                     if (edgeInvaders.Count() > 0)
                     {
-                        invaderDirection = Direction.Left;
+                        nivel.InvaderDirection = Direction.Left;
                         foreach (Invader invader in invaders)
                             invader.Move(Direction.Down);
                     }
@@ -186,7 +186,7 @@ namespace Lab_3___Invaders
                     }
                 }
 
-                if (invaderDirection == Direction.Left)
+                if (nivel.InvaderDirection == Direction.Left)
                 {
                     var edgeInvaders =
                         from invader in invaders
@@ -194,7 +194,7 @@ namespace Lab_3___Invaders
                         select invader;
                     if (edgeInvaders.Count() > 0)
                     {
-                        invaderDirection = Direction.Right;
+                        nivel.InvaderDirection = Direction.Right;
                         foreach (Invader invader in invaders)
                             invader.Move(Direction.Down);
                     }
@@ -217,7 +217,7 @@ namespace Lab_3___Invaders
 
                 foreach (Invader invader in invaders)
                 {
-                    invader.Move(invaderDirection);
+                    invader.Move(nivel.InvaderDirection);
                 }
 
             }
@@ -229,9 +229,9 @@ namespace Lab_3___Invaders
         private void returnFire()
         {
             //// invaders check their location and fire at the player
-            if (invaderShots.Count == wave)
+            if (invaderShots.Count == nivel.Wave)
                 return;
-            if (random.Next(10) < (10 - wave))
+            if (random.Next(10) < (10 - nivel.Wave))
                 return;
 
             var invaderColumns =
@@ -256,7 +256,6 @@ namespace Lab_3___Invaders
             formArea);
             invaderShots.Add(newShot);
         }
-
 
         private void checkForCollisions()
         {
@@ -308,7 +307,7 @@ namespace Lab_3___Invaders
                         // Add bonus
                         score = invader.AddAditionalScore(score);
                         // Score multiplier based on wave
-                        score = score + (1 * wave);
+                        score = score + (1 * nivel.Wave);
                     }
                 }
                 foreach (Invader invader in deadInvaders)
@@ -323,76 +322,6 @@ namespace Lab_3___Invaders
                 invaderShots.Remove(shot);
         }
 
-        private void nextWave()
-        {
-            // Incrementa nivel
-            wave++;
-
-            // Direction dirección derecha
-            invaderDirection = Direction.Right;
-
-            // if the wave is under 7, set frames skipped to 6 - current wave number
-            // Mientras menos frames por segundo haya, mas rapido ira
-            if (wave < 7)
-            {
-                framesSkipped = 6 - wave;
-            }
-            else
-                framesSkipped = 0;
-
-            int currentInvaderYSpace = 0;
-
-            // Para cada ShipType
-            for (int x = 0; x < 5; x++)
-            {
-                ShipType currentInvaderType = (ShipType)x;
-                // Hace el espaciado entre los enemigos en el eje X
-                currentInvaderYSpace += invaderYSpacing;
-                int currentInvaderXSpace = 0;
-
-                // Numero de columnas de los enemigos en eje Y
-                for (int y = 0; y < 5; y++)
-                {
-                    currentInvaderXSpace += invaderXSpacing;
-                    // Encuentra los puntos para dibujar a los enemigos
-                    Point newInvaderPoint =
-                        new Point(currentInvaderXSpace, currentInvaderYSpace);
-
-                    // Need to add more varied invader score values
-                    /*Invader newInvader =
-                        new Invader(currentInvaderType, newInvaderPoint, 10);*/
-                    #region FactoryMethod
-                    CrearInvaders(currentInvaderType,newInvaderPoint, 10);
-                    #endregion
-                }
-            }
-        }
-
-        public void CrearInvaders(ShipType currentInvaderType, Point newInvaderPoint, int score)
-        {
-            Invader enemy = null;
-            switch (currentInvaderType)
-            {
-                case ShipType.Bug:
-                    enemy = new Bug(currentInvaderType, newInvaderPoint, 10);
-                    break;
-                case ShipType.Satellite:
-                    enemy = new Satellite(currentInvaderType, newInvaderPoint, 10);
-                    break;
-                case ShipType.Saucer:
-                    enemy = new Saucer(currentInvaderType, newInvaderPoint, 10);
-                    break;
-                case ShipType.Spaceship:
-                    enemy = new Spaceship(currentInvaderType, newInvaderPoint, 10);
-                    break;
-                case ShipType.Star:
-                    enemy = new Lab_3___Invaders.Factory.Star(currentInvaderType, newInvaderPoint, 10);
-                    break;
-            }
-            invaders.Add(enemy);
-        }
-
         public event EventHandler GameOver;
     }
-
 }

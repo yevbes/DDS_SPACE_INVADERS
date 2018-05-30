@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Direction.cs" />
+    <Compile Include="Nivel.cs" />
     <Compile Include="Patterns\Factory Method\Enemies\Saucer.cs" />
     <Compile Include="Patterns\Factory Method\Enemies\Satellite.cs" />
     <Compile Include="Patterns\Factory Method\Enemies\Spaceship.cs" />
