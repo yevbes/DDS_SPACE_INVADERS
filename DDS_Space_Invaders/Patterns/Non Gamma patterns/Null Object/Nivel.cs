@@ -1,4 +1,5 @@
 ﻿using Lab_3___Invaders.Factory;
+using Lab_3___Invaders.Patterns.Non_Gamma_patterns.Null_Object;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -7,27 +8,13 @@ using System.Text;
 
 namespace Lab_3___Invaders
 {
-    class Nivel
+    class Nivel : Levels
     {
-        private const int FINAL_LEVEL = 6;
-        private List<Invader> invaders;
-        private const int invaderXSpacing = 60;
-        private const int invaderYSpacing = 60;
-        private int wave = 0;
-        private int framesSkipped = 6;
-        private Direction invaderDirection;
-
-        public Nivel(List<Invader> invaders)
+        public Nivel(List<Invader> invaders) : base(invaders)
         {
             this.invaders = invaders;
         }
-
-        public static int FINAL_LEVEL1 => FINAL_LEVEL;
-        public int Wave { get => wave; set => wave = value; }
-        public int FramesSkipped { get => framesSkipped; set => framesSkipped = value; }
-        internal Direction InvaderDirection { get => invaderDirection; set => invaderDirection = value; }
-
-        public void nextWave()
+        public override void nextWave()
         {
             // Incrementa nivel
             Wave++;

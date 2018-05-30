@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Lab_3___Invaders.Resources;
 using Lab_3___Invaders.Factory;
+using Lab_3___Invaders.Patterns.Non_Gamma_patterns.Null_Object;
 
 namespace Lab_3___Invaders
 {
@@ -14,7 +15,8 @@ namespace Lab_3___Invaders
         private Stars stars;
         private Rectangle formArea;
         private Random random;
-        private Nivel nivel;
+        private Levels nivel;
+        //private Levels levels;
 
         private int score = 0;
         private int livesLeft = 4;
@@ -94,8 +96,8 @@ namespace Lab_3___Invaders
                 statsFont, Brushes.Yellow, waveLocation);
             if (gameOver)
             {
-                graphics.DrawString("GAME OVER", messageFont, Brushes.Red,
-                    (formArea.Width / 4), formArea.Height / 3);
+                nivel = new NullLevel(invaders,graphics,messageFont,formArea);
+                nivel.nextWave();
             }
             
         }

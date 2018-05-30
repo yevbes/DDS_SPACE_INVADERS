@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Lab_3___Invaders.Patterns.Non_Gamma_patterns.Null_Object;
 
 namespace Lab_3___Invaders
 {
