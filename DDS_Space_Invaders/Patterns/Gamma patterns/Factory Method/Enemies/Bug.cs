@@ -5,7 +5,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 
-namespace Lab_3___Invaders.Factory
+namespace Invaders.Factory
 {
     class Bug : Invader
     {

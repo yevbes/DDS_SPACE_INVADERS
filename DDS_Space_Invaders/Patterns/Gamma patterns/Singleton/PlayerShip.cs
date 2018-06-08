@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 
-namespace Lab_3___Invaders
+namespace Invaders
 {
     class PlayerShip
     {

@@ -1,4 +1,4 @@
-﻿namespace Lab_3___Invaders.Resources
+﻿namespace Invaders
 {
     public interface IEstrategia 
     {        

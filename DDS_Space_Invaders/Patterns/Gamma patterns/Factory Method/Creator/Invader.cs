@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Lab_3___Invaders.Factory
+namespace Invaders.Factory
 {
     abstract class Invader
     {

@@ -1,11 +1,11 @@
-﻿using Lab_3___Invaders.Factory;
+﻿using Invaders.Factory;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 
-namespace Lab_3___Invaders.Patterns.Non_Gamma_patterns.Null_Object
+namespace Invaders.Patterns.Non_Gamma_patterns.Null_Object
 {
     abstract class Levels
     {

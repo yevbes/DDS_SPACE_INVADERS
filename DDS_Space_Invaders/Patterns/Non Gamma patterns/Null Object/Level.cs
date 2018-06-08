@@ -1,12 +1,12 @@
-﻿using Lab_3___Invaders.Factory;
-using Lab_3___Invaders.Patterns.Non_Gamma_patterns.Null_Object;
+﻿using Invaders.Factory;
+using Invaders.Patterns.Non_Gamma_patterns.Null_Object;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 
-namespace Lab_3___Invaders
+namespace Invaders
 {
     class Level : Levels
     {
@@ -77,7 +77,7 @@ namespace Lab_3___Invaders
                     enemy = new Spaceship(currentInvaderType, newInvaderPoint, 10);
                     break;
                 case ShipType.Star:
-                    enemy = new Lab_3___Invaders.Factory.Star(currentInvaderType, newInvaderPoint, 10);
+                    enemy = new Invaders.Factory.Star(currentInvaderType, newInvaderPoint, 10);
                     break;
             }
             invaders.Add(enemy);

@@ -5,7 +5,7 @@ using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Lab_3___Invaders
+namespace Invaders
 {
     class Shot
     {

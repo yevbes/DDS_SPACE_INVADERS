@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
-using Lab_3___Invaders.Resources;
-using Lab_3___Invaders.Factory;
-using Lab_3___Invaders.Patterns.Non_Gamma_patterns.Null_Object;
+using Invaders.Factory;
+using Invaders.Patterns.Non_Gamma_patterns.Null_Object;
 
-namespace Lab_3___Invaders
+namespace Invaders
 {
-    class Game
+    class Game : IGame
     {
         private Stars stars;
         private Rectangle formArea;
@@ -33,12 +32,11 @@ namespace Lab_3___Invaders
         private PointF livesLocation;
         private PointF waveLocation;
 
-        private int numShots = 2;
-        private IEstrategia ia;
+        private int numShots = 2; 
 
         Font messageFont = new Font(FontFamily.GenericMonospace, 50, FontStyle.Bold);
         Font statsFont = new Font(FontFamily.GenericMonospace, 15);
-        
+
         public Game(Random random, Rectangle formArea)
         {
             this.formArea = formArea;
@@ -68,6 +66,9 @@ namespace Lab_3___Invaders
             //nextWave();
         }
 
+        public int LivesLeft { get => livesLeft; set => livesLeft = value; }
+        public int NumShots { get => numShots; set => numShots = value; }
+
         // Draw is fired with each paint event of the main form
         public void Draw(Graphics graphics, int frame, bool gameOver)
         {
@@ -90,7 +91,7 @@ namespace Lab_3___Invaders
 
             graphics.DrawString(("Score: " + score.ToString()), 
                 statsFont, Brushes.Yellow, scoreLocation);
-            graphics.DrawString(("Lives: " + livesLeft.ToString()),
+            graphics.DrawString(("Lives: " + LivesLeft.ToString()),
                 statsFont, Brushes.Yellow, livesLocation);
             graphics.DrawString(("Wave: " + nivel.Wave.ToString()),
                 statsFont, Brushes.Yellow, waveLocation);
@@ -118,7 +119,7 @@ namespace Lab_3___Invaders
 
         public void FireShot()
         {
-            if (playerShots.Count < numShots)
+            if (playerShots.Count < NumShots)
             {
                 Shot newShot = new Shot(
                     new Point((playerShip.Location.X + (playerShip.image.Width / 2))
@@ -162,7 +163,7 @@ namespace Lab_3___Invaders
             }
         }
 
-        private void moveInvaders()
+        public void moveInvaders()
         {
             // if the frame is skipped invaders do not move
             if (currentGameFrame > nivel.FramesSkipped)
@@ -228,7 +229,7 @@ namespace Lab_3___Invaders
                 currentGameFrame = 1;
         }
 
-        private void returnFire()
+        public void returnFire()
         {
             //// invaders check their location and fire at the player
             if (invaderShots.Count == nivel.Wave)
@@ -259,7 +260,7 @@ namespace Lab_3___Invaders
             invaderShots.Add(newShot);
         }
 
-        private void checkForCollisions()
+        public void checkForCollisions()
         {
             // Created seperate lists of dead shots since items can't be
             // removed from a list while enumerating through it
@@ -271,27 +272,9 @@ namespace Lab_3___Invaders
                 if (playerShip.Area.Contains(shot.Location))
                 {
                     deadInvaderShots.Add(shot);
-                    livesLeft--;
+                    LivesLeft--;
                     playerShip.Alive = false;
-
-                    //PATRON ESTRATEGIA
-                    if (livesLeft == 3)
-                    {
-                        this.ia = new EstrategiaDispara3() as IEstrategia;
-                        numShots = ia.Exec();
-                        
-                    }
-                    if (livesLeft == 2)
-                    {
-                        this.ia = new EstrategiaDispara4() as IEstrategia;
-                        numShots = ia.Exec();
-                    }
-                    if (livesLeft == 1)
-                    {
-                        this.ia = new EstrategiaDispara5() as IEstrategia;
-                        numShots = ia.Exec();
-                    }
-                    if (livesLeft == 0)
+                    if (LivesLeft == 0)
                        GameOver(this, null);
                     // worth checking for gameOver state here too?
                 }

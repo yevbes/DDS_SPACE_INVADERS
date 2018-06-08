@@ -6,9 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Lab_3___Invaders.Patterns.Non_Gamma_patterns.Null_Object;
+using Invaders.Patterns.Non_Gamma_patterns.Null_Object;
 
-namespace Lab_3___Invaders
+namespace Invaders
 {
     public partial class Form1 : Form
     {
@@ -19,6 +19,7 @@ namespace Lab_3___Invaders
         Random random = new Random();
         private Rectangle r;
         private Graphics g;
+        private IEstrategia ia;
 
         List<Keys> keysPressed = new List<Keys>();
 
@@ -94,6 +95,27 @@ namespace Lab_3___Invaders
                     return;
                 }
             }
+            UseStrategy();
+            
+        }
+
+        private void UseStrategy()
+        {
+            switch (game.LivesLeft)
+            {
+                case 1:
+                    this.ia = new EstrategiaDispara5() as IEstrategia;
+                    game.NumShots = ia.Exec();
+                    break;
+                case 2:
+                    this.ia = new EstrategiaDispara4() as IEstrategia;
+                    game.NumShots = ia.Exec();
+                    break;
+                case 3:
+                    this.ia = new EstrategiaDispara3() as IEstrategia;
+                    game.NumShots = ia.Exec();
+                    break;
+            }
         }
 
         private void game_GameOver(object sender, EventArgs e)
@@ -102,24 +124,5 @@ namespace Lab_3___Invaders
             gameOver = true;
             Invalidate();
         }
-        //Timer t;
-        //int move_x = 0;
-        //int move_y = 1;
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            /*r = new Rectangle(10, 10, 35, 35);
-            g = this.CreateGraphics();
-            t = new Timer();
-            t.Interval = 10;
-            t.Tick += new EventHandler(t_Ticks_Two);
-            t.Start();*/
-        }
-
-        /*private void t_Ticks_Two(object sender, EventArgs e)
-        {
-            g.DrawRectangle(new Pen(Brushes.Cornsilk, 6), r);
-            r.Y += move_y;
-        }*/
     }
 }

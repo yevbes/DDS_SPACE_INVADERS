@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lab_3___Invaders.Properties
+namespace Invaders.Properties
 {
 
 
