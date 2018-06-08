@@ -97,6 +97,10 @@ namespace Invaders
         {
             switch (game.LivesLeft)
             {
+                case 0:
+                    this.ia = new EstrategiaMuere() as IEstrategia;
+                    game.NumShots = ia.Exec();
+                    break;
                 case 1:
                     this.ia = new EstrategiaDispara5() as IEstrategia;
                     game.NumShots = ia.Exec();

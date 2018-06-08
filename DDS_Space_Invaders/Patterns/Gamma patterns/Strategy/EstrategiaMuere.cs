@@ -6,7 +6,6 @@
         {
             int numShoots = 0;
             return numShoots;
-
         }
     }
 }

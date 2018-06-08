@@ -273,7 +273,6 @@ namespace Invaders
                     playerShip.Alive = false;
                     if (LivesLeft == 0)
                         GameOver(this, null);
-                    // worth checking for gameOver state here too?
                 }
             }
 
