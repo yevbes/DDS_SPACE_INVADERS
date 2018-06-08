@@ -1,10 +1,7 @@
 ﻿using Invaders.Factory;
 using Invaders.Patterns.Non_Gamma_patterns.Null_Object;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 
 namespace Invaders
 {

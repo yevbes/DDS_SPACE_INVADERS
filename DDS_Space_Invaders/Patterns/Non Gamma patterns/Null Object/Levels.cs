@@ -1,9 +1,6 @@
 ﻿using Invaders.Factory;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 
 namespace Invaders.Patterns.Non_Gamma_patterns.Null_Object
 {

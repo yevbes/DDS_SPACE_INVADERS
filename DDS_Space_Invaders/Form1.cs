@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using Invaders.Patterns.Non_Gamma_patterns.Null_Object;
 
 namespace Invaders
 {
@@ -17,7 +12,6 @@ namespace Invaders
         private Game game;
         public Rectangle FormArea { get { return this.ClientRectangle; } }
         Random random = new Random();
-        private Rectangle r;
         private Graphics g;
         private IEstrategia ia;
 
@@ -57,20 +51,20 @@ namespace Invaders
             if (e.KeyCode == Keys.Q)
                 Application.Exit();
             if (e.KeyCode == Keys.S)
-                {
-                    // code to reset the game
-                    gameOver = false;
-                    game = new Game(random, FormArea);
-                    game.GameOver += new EventHandler(game_GameOver);
-                    gameTimer.Start();
-                    return;
-                }
+            {
+                // code to reset the game
+                gameOver = false;
+                game = new Game(random, FormArea);
+                game.GameOver += new EventHandler(game_GameOver);
+                gameTimer.Start();
+                return;
+            }
             if (e.KeyCode == Keys.Space)
                 game.FireShot();
             if (keysPressed.Contains(e.KeyCode))
                 keysPressed.Remove(e.KeyCode);
             keysPressed.Add(e.KeyCode);
-        
+
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
@@ -96,7 +90,7 @@ namespace Invaders
                 }
             }
             UseStrategy();
-            
+
         }
 
         private void UseStrategy()

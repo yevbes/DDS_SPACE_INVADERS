@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Drawing;
-using System.Windows.Forms;
-using Invaders.Factory;
+﻿using Invaders.Factory;
 using Invaders.Patterns.Non_Gamma_patterns.Null_Object;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
 
 namespace Invaders
 {
@@ -15,11 +13,10 @@ namespace Invaders
         private Rectangle formArea;
         private Random random;
         private Levels nivel;
-        //private Levels levels;
 
         private int score = 0;
         private int livesLeft = 4;
-        
+
         private int currentGameFrame = 1;
 
         private List<Invader> invaders;
@@ -32,7 +29,7 @@ namespace Invaders
         private PointF livesLocation;
         private PointF waveLocation;
 
-        private int numShots = 2; 
+        private int numShots = 2;
 
         Font messageFont = new Font(FontFamily.GenericMonospace, 50, FontStyle.Bold);
         Font statsFont = new Font(FontFamily.GenericMonospace, 15);
@@ -43,7 +40,7 @@ namespace Invaders
             this.random = random;
 
             // Se crea un objeto con una Lista de Estrellas con su posición y el color
-            stars = new Stars(random, formArea); 
+            stars = new Stars(random, formArea);
 
             // Crea los labels en la posición del rectangulo
             scoreLocation = new PointF((formArea.Left + 5.0F), (formArea.Top + 5.0F));
@@ -74,7 +71,7 @@ namespace Invaders
         {
             // Fondo negro
             graphics.FillRectangle(Brushes.Black, formArea);
-            
+
             // Dibuja las estrellas
             stars.Draw(graphics);
 
@@ -89,7 +86,7 @@ namespace Invaders
             foreach (Shot shot in invaderShots)
                 shot.Draw(graphics);
 
-            graphics.DrawString(("Score: " + score.ToString()), 
+            graphics.DrawString(("Score: " + score.ToString()),
                 statsFont, Brushes.Yellow, scoreLocation);
             graphics.DrawString(("Lives: " + LivesLeft.ToString()),
                 statsFont, Brushes.Yellow, livesLocation);
@@ -97,10 +94,10 @@ namespace Invaders
                 statsFont, Brushes.Yellow, waveLocation);
             if (gameOver)
             {
-                nivel = new NullLevel(invaders,graphics,messageFont,formArea);
+                nivel = new NullLevel(invaders, graphics, messageFont, formArea);
                 nivel.nextWave();
             }
-            
+
         }
 
         // Twinkle (animates stars) is called from the form animation timer
@@ -275,7 +272,7 @@ namespace Invaders
                     LivesLeft--;
                     playerShip.Alive = false;
                     if (LivesLeft == 0)
-                       GameOver(this, null);
+                        GameOver(this, null);
                     // worth checking for gameOver state here too?
                 }
             }
