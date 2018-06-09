@@ -1,8 +1,7 @@
 ﻿namespace Invaders
 {
-    public interface IEstrategia 
-    {        
+    public interface IEstrategia
+    {
         int Exec();
-       
     }
 }

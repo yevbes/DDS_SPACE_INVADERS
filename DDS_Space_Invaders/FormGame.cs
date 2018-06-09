@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Invaders.Patterns.Gamma_patterns.Strategy;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -13,8 +14,6 @@ namespace Invaders
         public Rectangle FormArea { get { return this.ClientRectangle; } }
         Random random = new Random();
         private Graphics g;
-        private IEstrategia ia;
-
         List<Keys> keysPressed = new List<Keys>();
 
         private bool gameOver;
@@ -95,23 +94,24 @@ namespace Invaders
 
         private void UseStrategy()
         {
+            Contexto context = null;
             switch (game.LivesLeft)
             {
                 case 0:
-                    this.ia = new EstrategiaMuere() as IEstrategia;
-                    game.NumShots = ia.Exec();
+                    context = new Contexto(new EstrategiaMuere());
+                    game.NumShots = context.ExecuteStrategy();
                     break;
                 case 1:
-                    this.ia = new EstrategiaDispara5() as IEstrategia;
-                    game.NumShots = ia.Exec();
+                    context = new Contexto(new EstrategiaDispara5());
+                    game.NumShots = context.ExecuteStrategy();
                     break;
                 case 2:
-                    this.ia = new EstrategiaDispara4() as IEstrategia;
-                    game.NumShots = ia.Exec();
+                    context = new Contexto(new EstrategiaDispara4());
+                    game.NumShots = context.ExecuteStrategy();
                     break;
                 case 3:
-                    this.ia = new EstrategiaDispara3() as IEstrategia;
-                    game.NumShots = ia.Exec();
+                    context = new Contexto(new EstrategiaDispara3());
+                    game.NumShots = context.ExecuteStrategy();
                     break;
             }
         }
