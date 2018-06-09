@@ -1,13 +1,13 @@
 ﻿using System.Drawing;
 
-namespace Invaders
+namespace Invaders.Patterns.Gamma_patterns.Facade
 {
-    struct Star
+    struct ShapeStar
     {
         public Point point;
         public Brush brush;
 
-        public Star(Point point, Brush brush)
+        public ShapeStar(Point point, Brush brush)
         {
             this.point = point;
             this.brush = brush;

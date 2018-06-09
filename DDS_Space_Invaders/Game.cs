@@ -1,5 +1,6 @@
 ﻿using Invaders.Factory;
 using Invaders.Patterns.Non_Gamma_patterns.Null_Object;
+using Invaders.Patterns.Gamma_patterns.Facade;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -9,7 +10,7 @@ namespace Invaders
 {
     class Game : IGame
     {
-        private Stars stars;
+        private StarMaker stars;
         private Rectangle formArea;
         private Random random;
         private Levels nivel;
@@ -40,7 +41,7 @@ namespace Invaders
             this.random = random;
 
             // Se crea un objeto con una Lista de Estrellas con su posición y el color
-            stars = new Stars(random, formArea);
+            stars = new StarMaker(random, formArea);
 
             // Crea los labels en la posición del rectangulo
             scoreLocation = new PointF((formArea.Left + 5.0F), (formArea.Top + 5.0F));
@@ -72,8 +73,10 @@ namespace Invaders
             // Fondo negro
             graphics.FillRectangle(Brushes.Black, formArea);
 
-            // Dibuja las estrellas
-            stars.Draw(graphics);
+            // Dibuja las estrellas patron fachada
+            stars.DrawWhiteStar(graphics);
+            stars.DrawYellowStar(graphics);
+            stars.DrawBlueStar(graphics);
 
             // Para cada invader le pasa frame de animación
             foreach (Invader invader in invaders)

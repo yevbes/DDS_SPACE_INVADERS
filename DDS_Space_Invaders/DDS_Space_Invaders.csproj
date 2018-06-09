@@ -48,6 +48,11 @@
   <ItemGroup>
     <Compile Include="GameComponents\Direction.cs" />
     <Compile Include="IGame.cs" />
+    <Compile Include="Patterns\Gamma patterns\Facade\StarTypes\BlueStar.cs" />
+    <Compile Include="Patterns\Gamma patterns\Facade\IShape.cs" />
+    <Compile Include="Patterns\Gamma patterns\Facade\StarMaker.cs" />
+    <Compile Include="Patterns\Gamma patterns\Facade\StarTypes\WhiteStar.cs" />
+    <Compile Include="Patterns\Gamma patterns\Facade\StarTypes\YellowStar.cs" />
     <Compile Include="Patterns\Non Gamma patterns\Null Object\Level.cs" />
     <Compile Include="Patterns\Gamma patterns\Factory Method\Enemies\Saucer.cs" />
     <Compile Include="Patterns\Gamma patterns\Factory Method\Enemies\Satellite.cs" />
@@ -74,8 +79,8 @@
     <Compile Include="Patterns\Gamma patterns\Strategy\EstrategiaDispara4.cs" />
     <Compile Include="GameComponents\ShipType.cs" />
     <Compile Include="GameComponents\Shot.cs" />
-    <Compile Include="GameComponents\Star.cs" />
-    <Compile Include="GameComponents\Stars.cs" />
+    <Compile Include="Patterns\Gamma patterns\Facade\ShapeStar.cs" />
+    <Compile Include="Patterns\Gamma patterns\Facade\Star.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
