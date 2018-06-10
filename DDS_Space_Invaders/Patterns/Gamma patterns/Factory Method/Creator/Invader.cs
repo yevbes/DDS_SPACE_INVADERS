@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Invaders.Factory
 {
-    abstract class Invader : IDecor
+    public abstract class Invader : IDecor
     {
         private const int horizontalInterval = 10;
         private const int verticalInterval = 30;

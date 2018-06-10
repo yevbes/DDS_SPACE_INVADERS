@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace Invaders
 {
-    class PlayerShip
+    public class PlayerShip
     {
         private const int horizontalInterval = 10;
         public Point Location { get; private set; }

@@ -1,6 +1,6 @@
 ﻿namespace Invaders
 {
-    enum Direction
+    public enum Direction
     {
         Left,
         Right,

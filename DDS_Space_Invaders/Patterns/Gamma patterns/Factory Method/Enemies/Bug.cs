@@ -2,7 +2,7 @@
 
 namespace Invaders.Factory
 {
-    class Bug : Invader
+    public class Bug : Invader
     {
         public Bug(ShipType invaderType, Point location, int score) : base(invaderType, location, score)
         {

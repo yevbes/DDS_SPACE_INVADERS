@@ -10,7 +10,7 @@ using Invaders.Patterns.Gamma_patterns.Decorator.Decorators;
 
 namespace Invaders
 {
-    class Game : IGame
+    public class Game : IGame
     {
         private StarMaker stars;
         private Rectangle formArea;

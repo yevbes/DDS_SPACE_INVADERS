@@ -1,6 +1,6 @@
 ﻿namespace Invaders
 {
-    enum ShipType
+    public enum ShipType
     {
         Bug,
         Saucer,
