@@ -15,12 +15,14 @@ namespace Invaders
         Random random = new Random();
         private Graphics g;
         List<Keys> keysPressed = new List<Keys>();
+        private PrincipalForm principal;
 
         private bool gameOver;
 
-        public Form1()
+        public Form1(PrincipalForm principalForm)
         {
             InitializeComponent();
+            this.principal = principalForm;
             Frame = 0;
             game = new Game(random, FormArea);
             gameOver = false;
@@ -48,7 +50,10 @@ namespace Invaders
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Q)
-                Application.Exit();
+            {
+                this.principal.Show();
+                this.Close();
+            }
             if (e.KeyCode == Keys.S)
             {
                 // code to reset the game
@@ -120,6 +125,11 @@ namespace Invaders
             gameTimer.Stop();
             gameOver = true;
             Invalidate();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.principal.Show();
         }
     }
 }
