@@ -29,7 +29,7 @@ namespace Invaders
                     deathWait = DateTime.Now;
             }
         }
-        
+
         private Rectangle boundaries;
 
         private float deadShipHeight;

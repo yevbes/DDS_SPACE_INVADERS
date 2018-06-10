@@ -1,15 +1,16 @@
-﻿using System;
+﻿using Invaders.Patterns.Gamma_patterns.Decorator;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace Invaders.Factory
 {
-    abstract class Invader
+    abstract class Invader : IDecor
     {
         private const int horizontalInterval = 10;
         private const int verticalInterval = 30;
 
-        private Bitmap image;
+        public Bitmap image;
         private Bitmap[] imageArray;
 
         public Point Location { get; private set; }
@@ -56,20 +57,26 @@ namespace Invaders.Factory
         public Graphics Draw(Graphics graphics, int animationCell)
         {
             Graphics invaderGraphics = graphics;
-            image = imageArray[animationCell];
-            try
             {
-                graphics.DrawImage(image, Location);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
+                try
+                {
+                    graphics.DrawImage(image, Location);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
 
             //DEBUG red square invaders
             //graphics.FillRectangle(Brushes.Red,
             //    Location.X, Location.Y, 20, 20);
             return invaderGraphics;
+        }
+
+        public void SetImage(Bitmap image)
+        {
+            this.image = image;
         }
 
         public virtual int AddAditionalScore(int score)
@@ -79,38 +86,23 @@ namespace Invaders.Factory
 
         private void createInvaderBitmapArray()
         {
-            imageArray = new Bitmap[4];
+            imageArray = new Bitmap[1];
             switch (InvaderType)
             {
                 case ShipType.Bug:
                     imageArray[0] = Properties.Resources.bug1;
-                    imageArray[1] = Properties.Resources.bug2;
-                    imageArray[2] = Properties.Resources.bug3;
-                    imageArray[3] = Properties.Resources.bug4;
                     break;
                 case ShipType.Satellite:
                     imageArray[0] = Properties.Resources.satellite1;
-                    imageArray[1] = Properties.Resources.satellite2;
-                    imageArray[2] = Properties.Resources.satellite3;
-                    imageArray[3] = Properties.Resources.satellite4;
                     break;
                 case ShipType.Saucer:
                     imageArray[0] = Properties.Resources.flyingsaucer1;
-                    imageArray[1] = Properties.Resources.flyingsaucer2;
-                    imageArray[2] = Properties.Resources.flyingsaucer3;
-                    imageArray[3] = Properties.Resources.flyingsaucer4;
                     break;
                 case ShipType.Spaceship:
                     imageArray[0] = Properties.Resources.spaceship1;
-                    imageArray[1] = Properties.Resources.spaceship2;
-                    imageArray[2] = Properties.Resources.spaceship3;
-                    imageArray[3] = Properties.Resources.spaceship4;
                     break;
                 case ShipType.Star:
                     imageArray[0] = Properties.Resources.star1;
-                    imageArray[1] = Properties.Resources.star2;
-                    imageArray[2] = Properties.Resources.star3;
-                    imageArray[3] = Properties.Resources.star4;
                     break;
             }
         }

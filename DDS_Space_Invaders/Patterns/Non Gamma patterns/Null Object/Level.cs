@@ -2,6 +2,7 @@
 using Invaders.Patterns.Non_Gamma_patterns.Null_Object;
 using System.Collections.Generic;
 using System.Drawing;
+using Invaders.Patterns.Gamma_patterns.Decorator;
 
 namespace Invaders
 {
@@ -59,6 +60,7 @@ namespace Invaders
         private void CrearInvaders(ShipType currentInvaderType, Point newInvaderPoint, int score)
         {
             Invader enemy = null;
+
             switch (currentInvaderType)
             {
                 case ShipType.Bug:

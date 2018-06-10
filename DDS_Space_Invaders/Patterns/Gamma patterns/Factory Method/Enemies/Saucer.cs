@@ -12,5 +12,6 @@ namespace Invaders.Factory
         {
             return score + 3;
         }
+
     }
 }

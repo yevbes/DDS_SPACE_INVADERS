@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using Invaders.Patterns.Gamma_patterns.Decorator;
+using Invaders.Patterns.Gamma_patterns.Decorator.Decorators;
 
 namespace Invaders
 {
@@ -14,6 +16,7 @@ namespace Invaders
         private Rectangle formArea;
         private Random random;
         private Levels nivel;
+        private IDecor decorInvader;
 
         private int score = 0;
         private int livesLeft = 4;
@@ -80,9 +83,29 @@ namespace Invaders
 
             // Para cada invader le pasa frame de animación
             foreach (Invader invader in invaders)
-                invader.Draw(graphics, frame);
-            playerShip.Draw(graphics);
+            {
+                if (nivel.Wave <= 1)
+                {
+                    invader.Draw(graphics, frame);
+                }
+                else if (nivel.Wave == 2)
+                {
+                    decorInvader = new FirstAnimationInvader(invader);
+                    decorInvader.Draw(graphics, frame);
+                }
+                else if (nivel.Wave == 3)
+                {
+                    decorInvader = new SecondAnimationInvader(invader);
+                    decorInvader.Draw(graphics, frame);
+                }
+                else
+                {
+                    decorInvader = new ThirdAnimationInvader(invader);
+                    decorInvader.Draw(graphics, frame);
+                }
+            }
 
+            playerShip.Draw(graphics);
 
             foreach (Shot shot in playerShots)
                 shot.Draw(graphics);

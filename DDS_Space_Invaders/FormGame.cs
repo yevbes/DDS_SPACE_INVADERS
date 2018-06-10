@@ -89,7 +89,6 @@ namespace Invaders
                 }
             }
             UseStrategy();
-
         }
 
         private void UseStrategy()

@@ -8,11 +8,26 @@
     <ProjectGuid>{908DD367-E004-45CF-A91B-04AE44B65C15}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lab_3___Invaders</RootNamespace>
-    <AssemblyName>Lab 3 - Invaders</AssemblyName>
+    <RootNamespace>Invaders</RootNamespace>
+    <AssemblyName>Invaders</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -48,7 +63,11 @@
   <ItemGroup>
     <Compile Include="GameComponents\Direction.cs" />
     <Compile Include="IGame.cs" />
-    <Compile Include="Patterns\Gamma patterns\Decorator\ColorDecorator.cs" />
+    <Compile Include="Patterns\Gamma patterns\Decorator\Decorators\FirstAnimationInvader.cs" />
+    <Compile Include="Patterns\Gamma patterns\Decorator\Decorators\SecondAnimationInvader.cs" />
+    <Compile Include="Patterns\Gamma patterns\Decorator\Decorators\ThirdAnimationInvader.cs" />
+    <Compile Include="Patterns\Gamma patterns\Decorator\IDecor.cs" />
+    <Compile Include="Patterns\Gamma patterns\Decorator\InvaderDecorator.cs" />
     <Compile Include="Patterns\Gamma patterns\Facade\StarTypes\BlueStar.cs" />
     <Compile Include="Patterns\Gamma patterns\Facade\IShape.cs" />
     <Compile Include="Patterns\Gamma patterns\Facade\StarMaker.cs" />
@@ -171,6 +190,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Diagrama de clases\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nullable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
