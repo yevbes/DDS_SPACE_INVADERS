@@ -105,6 +105,9 @@
     <Compile Include="Patterns\Gamma patterns\Singleton\PlayerShip.cs" />
     <Compile Include="Patterns\Non Gamma patterns\Null Object\Levels.cs" />
     <Compile Include="Patterns\Non Gamma patterns\Null Object\NullLevel.cs" />
+    <Compile Include="Patterns\Non Gamma patterns\Object Poll\ICreation.cs" />
+    <Compile Include="Patterns\Non Gamma patterns\Object Poll\ObjectPool.cs" />
+    <Compile Include="Patterns\Non Gamma patterns\Object Poll\Reusable.cs" />
     <Compile Include="PrincipalForm.cs">
       <SubType>Form</SubType>
     </Compile>
