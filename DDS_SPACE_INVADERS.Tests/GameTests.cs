@@ -28,7 +28,6 @@ namespace Invaders.Tests
             Assert.AreEqual(esperado1, actual);
         }
 
-
         [TestMethod]
         public void Comprobar_Instancia_Unica_Singleton()
         {
@@ -38,5 +37,14 @@ namespace Invaders.Tests
             Assert.AreEqual(ps1, ps2);
         }
 
+        [TestMethod]
+        public void Resultado_Metodo_CreateLabel()
+        {
+            Form1 form1 = new Form1(null);
+            string refValue = "PAUSE";
+            form1.CreateLabel(ref refValue);
+            string actualValue = refValue;
+            Assert.AreEqual("PAUSE", actualValue);
+        }
     }
 }

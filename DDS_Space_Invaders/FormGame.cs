@@ -20,11 +20,13 @@ namespace Invaders
         private bool gameOver;
         private bool aux = true;
         private Label namelabel;
+        private string start;
 
         public Form1(PrincipalForm principalForm)
         {
             InitializeComponent();
-            CreateLabel("PRESS S TO START");
+            start = "PRESS S TO START";
+            CreateLabel(ref start);
             this.principal = principalForm;
             Frame = 0;
             game = new Game(random, FormArea);
@@ -33,7 +35,7 @@ namespace Invaders
             animationTimer.Start();
         }
 
-        private void CreateLabel(string txt)
+        public void CreateLabel(ref string txt)
         {
             namelabel = new Label();
             int x = (Size.Width / 2) - (namelabel.Width / 2);
@@ -66,14 +68,14 @@ namespace Invaders
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-
+            start = "PAUSE";
             if (e.KeyCode == Keys.P)
             {
                 if (aux)
                 {
                     gameTimer.Stop();
                     aux = false;
-                    CreateLabel("PAUSE");
+                    CreateLabel(ref start);
                 }
                 else
                 {
