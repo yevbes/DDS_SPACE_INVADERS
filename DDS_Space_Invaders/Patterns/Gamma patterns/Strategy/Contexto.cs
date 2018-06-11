@@ -16,7 +16,7 @@ namespace Invaders.Patterns.Gamma_patterns.Strategy
 
         public int ExecuteStrategy()
         {
-            return strategy.Exec();
+            return strategy.EjecutarEstrategia();
         }
     }
 }

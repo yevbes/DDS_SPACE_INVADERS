@@ -1,4 +1,5 @@
 ﻿using Invaders.Patterns.Gamma_patterns.Strategy;
+using Invaders.Patterns.Non_Gamma_patterns.Object_Poll;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

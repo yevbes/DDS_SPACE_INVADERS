@@ -2,6 +2,6 @@
 {
     public interface IEstrategia
     {
-        int Exec();
+        int EjecutarEstrategia();
     }
 }

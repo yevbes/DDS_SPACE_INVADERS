@@ -2,7 +2,7 @@
 {
     class EstrategiaDispara3 : IEstrategia
     {
-        int IEstrategia.Exec()
+        int IEstrategia.EjecutarEstrategia()
         {
             int numShoots = 3;
             return numShoots;
