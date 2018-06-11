@@ -18,16 +18,33 @@ namespace Invaders
         private PrincipalForm principal;
 
         private bool gameOver;
+        private bool aux = true;
+        private Label namelabel;
 
         public Form1(PrincipalForm principalForm)
         {
             InitializeComponent();
+            CreateLabel("PRESS S TO START");
             this.principal = principalForm;
             Frame = 0;
             game = new Game(random, FormArea);
             gameOver = false;
             game.GameOver += new EventHandler(game_GameOver);
             animationTimer.Start();
+        }
+
+        private void CreateLabel(string txt)
+        {
+            namelabel = new Label();
+            int x = (Size.Width / 2) - (namelabel.Width / 2);
+            int y = (Size.Height - namelabel.Height) / 2;
+            namelabel.Location = new Point(x, y);
+            namelabel.ForeColor = Color.Red;
+            namelabel.BackColor = Color.Transparent;
+            namelabel.AutoSize = true;
+            namelabel.Font = new Font(namelabel.Font.FontFamily.Name, 30);
+            namelabel.Text = txt;
+            this.Controls.Add(namelabel);
         }
 
         private void animationTimer_Tick(object sender, EventArgs e)
@@ -49,6 +66,23 @@ namespace Invaders
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
+
+            if (e.KeyCode == Keys.P)
+            {
+                if (aux)
+                {
+                    gameTimer.Stop();
+                    aux = false;
+                    CreateLabel("PAUSE");
+                }
+                else
+                {
+                    gameTimer.Start();
+                    aux = true;
+                    this.Controls.Remove(namelabel);
+                }
+
+            }
             if (e.KeyCode == Keys.Q)
             {
                 this.principal.Show();
@@ -57,6 +91,7 @@ namespace Invaders
             if (e.KeyCode == Keys.S)
             {
                 // code to reset the game
+                this.Controls.Remove(namelabel);
                 gameOver = false;
                 game = new Game(random, FormArea);
                 game.GameOver += new EventHandler(game_GameOver);
