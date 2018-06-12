@@ -213,9 +213,7 @@
   <ItemGroup>
     <None Include="Resources\player.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Diagrama de clases\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\nullable.png" />
   </ItemGroup>

@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace Invaders.Patterns.Non_Gamma_patterns.Null_Object
 {
-    abstract class Levels
+    public abstract class Levels
     {
         private const int FINAL_LEVEL = 6;
         protected List<Invader> invaders;
@@ -19,7 +19,7 @@ namespace Invaders.Patterns.Non_Gamma_patterns.Null_Object
         protected Rectangle formArea;
         public abstract void nextWave();
 
-        protected Levels (List<Invader> invaders)
+        protected Levels(List<Invader> invaders)
         {
             this.invaders = invaders;
         }

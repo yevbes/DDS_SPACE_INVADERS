@@ -6,7 +6,7 @@ using Invaders.Patterns.Gamma_patterns.Decorator;
 
 namespace Invaders
 {
-    class Level : Levels
+    public class Level : Levels
     {
         public Level(List<Invader> invaders) : base(invaders)
         {

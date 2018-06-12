@@ -7,7 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using Invaders.Factory;
-
+using Invaders.Patterns.Gamma_patterns.Decorator;
+using DDS_SPACE_INVADERS.Tests.Properties;
 
 namespace Invaders.Tests
 {
